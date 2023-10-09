@@ -1,14 +1,27 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
+import { CarModelsService } from 'src/car-models/car-models.service';
 
 @Controller('types')
 export class TypesController {
+  constructor(private readonly carModelsService: CarModelsService) {}
   @Get()
-  findAll() {
-    return 'this will return all the types';
+  findAll(@Query() paginationQuery) {
+    const { limit, offset } = paginationQuery;
+    //This for pagination
+    return `this will return all the types with limit = ${limit} and offset = ${offset}`;
   }
 
   @Get(':id')
-  findOne(@Param('id') id: Number) {
+  findOne(@Param('id') id: number) {
     console.log(id);
     return `This is returning the ${id}`;
   }
