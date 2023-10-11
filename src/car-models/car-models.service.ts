@@ -31,7 +31,7 @@ export class CarModelsService {
   }
 
   remove(id: string) {
-    const carModelIndex = this.carModels.findIndex((item) => item.id);
+    const carModelIndex = this.carModels.findIndex((item) => item.id === +id);
     if (carModelIndex >= 0) {
       this.carModels.slice(carModelIndex, 1);
     }

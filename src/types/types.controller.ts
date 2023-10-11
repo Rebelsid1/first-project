@@ -15,29 +15,30 @@ export class TypesController {
   constructor(private readonly carModelsService: CarModelsService) {}
   @Get()
   findAll(@Query() paginationQuery) {
-    const { limit, offset } = paginationQuery;
+    //const { limit, offset } = paginationQuery;
+    return this.carModelsService.findAll();
     //This for pagination
-    return `this will return all the types with limit = ${limit} and offset = ${offset}`;
+    //return `this will return all the types with limit = ${limit} and offset = ${offset}`;
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     console.log(id);
-    return `This is returning the ${id}`;
+    return this.carModelsService.findOne(id);
   }
 
   @Post('cars')
   create(@Body() body) {
-    return body;
+    return this.carModelsService.create(body);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() body) {
-    return `this method updates the ${id} in this`;
+    return this.carModelsService.update(id, body);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `this will delete the actions on ${id}`;
+    return this.carModelsService.remove(id);
   }
 }
