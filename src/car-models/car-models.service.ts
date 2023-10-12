@@ -12,6 +12,20 @@ export class CarModelsService {
       fuel: 'Unleaded',
       Quattro: true,
     },
+    {
+      id: 2,
+      Name: 'A6',
+      Type: 'RS',
+      fuel: 'Unleaded',
+      Quattro: true,
+    },
+    {
+      id: 3,
+      Name: 'A7',
+      Type: 'RS',
+      fuel: 'Unleaded',
+      Quattro: true,
+    },
   ];
   findAll() {
     return this.carModels;
@@ -33,7 +47,7 @@ export class CarModelsService {
   remove(id: string) {
     const carModelIndex = this.carModels.findIndex((item) => item.id === +id);
     if (carModelIndex >= 0) {
-      this.carModels.slice(carModelIndex, 1);
+    this.carModels.splice(carModelIndex, 1);
     }
   }
 }

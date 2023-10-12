@@ -39,6 +39,6 @@ export class TypesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.carModelsService.remove(id);
+  return this.carModelsService.remove(id);
   }
 }
